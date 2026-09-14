@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Piyu & Babu ❤️ Private Love Space</title>
-    <!-- Tailwind CSS -->
+    <title>Piyu & Friends ❤️ Private Love Space</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts & Font Awesome -->
+    <!-- Google Fonts & Font Awesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Canvas Confetti for romantic animations -->
+    <!-- Canvas Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <style>
@@ -26,14 +26,14 @@
             font-family: 'Fredoka', cursive;
         }
         
-        /* Floating hearts background animation */
+        /* Floating background hearts animation */
         @keyframes floatUp {
             0% {
                 transform: translateY(100vh) scale(0.5) rotate(0deg);
-                opacity: 0.8;
+                opacity: 0.7;
             }
             100% {
-                transform: translateY(-20vh) scale(1.2) rotate(360deg);
+                transform: translateY(-20vh) scale(1.1) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -45,23 +45,24 @@
             animation: floatUp linear infinite;
         }
 
-        /* Glassmorphism elements */
+        /* Glassmorphism styling */
         .glass-card {
-            background: rgba(255, 255, 255, 0.78);
+            background: rgba(255, 255, 255, 0.82);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.7);
         }
 
         .glass-header {
-            background: rgba(255, 240, 245, 0.85);
+            background: rgba(255, 240, 245, 0.9);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
 
-        /* Custom scrollbar */
+        /* Scrollbar customization */
         ::-webkit-scrollbar {
             width: 5px;
+            height: 5px;
         }
         ::-webkit-scrollbar-track {
             background: transparent;
@@ -74,21 +75,21 @@
             background: #f472b6;
         }
 
-        /* Pulse glow animation for love elements */
+        /* Gentle love pulse effect */
         @keyframes lovePulse {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(244, 63, 94, 0.4)); }
-            50% { transform: scale(1.08); filter: drop-shadow(0 0 15px rgba(244, 63, 94, 0.8)); }
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(244, 63, 94, 0.3)); }
+            50% { transform: scale(1.06); filter: drop-shadow(0 0 12px rgba(244, 63, 94, 0.7)); }
         }
         .love-pulse {
-            animation: lovePulse 2s infinite ease-in-out;
+            animation: lovePulse 2.2s infinite ease-in-out;
         }
 
-        /* Message bubble animations */
+        /* Message pop-in animation */
         .msg-enter {
-            animation: popIn 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
         @keyframes popIn {
-            0% { opacity: 0; transform: translateY(12px) scale(0.92); }
+            0% { opacity: 0; transform: translateY(10px) scale(0.95); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
     </style>
@@ -96,22 +97,23 @@
 
 <body class="bg-gradient-to-br from-rose-100 via-pink-50 to-purple-100 min-h-screen text-gray-800 flex flex-col justify-center items-center p-2 sm:p-4 selection:bg-pink-300 relative overflow-x-hidden">
 
-    <!-- Floating Heart Particles Container -->
+    <!-- Floating particles background wrapper -->
     <div id="heartContainer" class="fixed inset-0 pointer-events-none overflow-hidden z-0"></div>
 
-    <!-- Notification / Toast Message Modal -->
-    <div id="customToast" class="fixed top-5 z-50 transform -translate-y-24 transition-all duration-300 ease-out max-w-sm w-11/12 bg-white/95 border border-pink-200 shadow-xl rounded-2xl p-3 px-4 flex items-center gap-3 backdrop-blur-md">
+    <!-- Toast Notification Banner -->
+    <div id="customToast" class="fixed top-4 z-50 transform -translate-y-24 transition-all duration-300 ease-out max-w-sm w-11/12 bg-white/95 border border-pink-200 shadow-xl rounded-2xl p-3 px-4 flex items-center gap-3 backdrop-blur-md">
         <span id="toastIcon" class="text-2xl">❤️</span>
-        <div class="flex-1 text-sm font-semibold text-gray-700" id="toastMessage">Welcome baby!</div>
+        <div class="flex-1 text-sm font-semibold text-gray-700" id="toastMessage">Welcome!</div>
     </div>
 
+    <!-- Password Lock Screen (Password: Piyu) -->
     <div id="lockScreen" class="fixed inset-0 z-40 bg-gradient-to-tr from-pink-400 via-rose-300 to-purple-400 flex items-center justify-center p-4">
         <div class="glass-card max-w-md w-full rounded-3xl p-6 sm:p-8 shadow-2xl text-center border-2 border-white/60 relative">
             <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-tr from-rose-400 to-pink-500 rounded-full flex items-center justify-center shadow-lg love-pulse text-4xl text-white">
                 🔐
             </div>
             <h1 class="font-pacifico text-3xl sm:text-4xl text-rose-600 mb-2">Our Secret Love Space</h1>
-            <p class="text-gray-600 text-sm mb-6 font-medium">Yeh private chat sirf ham dono ke liye hai! Kripya access password enter karein 💕</p>
+            <p class="text-gray-600 text-sm mb-6 font-medium">Yeh private room sirf hamare liye hai! Kripya access password enter karein 💕</p>
 
             <form id="lockForm" class="space-y-4">
                 <div class="relative">
@@ -122,7 +124,7 @@
                     </button>
                 </div>
                 <div id="passwordError" class="text-rose-500 text-xs font-semibold hidden flex items-center justify-center gap-1">
-                    <i class="fa-solid fa-circle-exclamation"></i> Password galat hai baby! Dobara try karo 🥺
+                    <i class="fa-solid fa-circle-exclamation"></i> Password galat hai! Dobara try karo 🥺
                 </div>
                 <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:to-purple-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-pink-300/60 transition-all transform active:scale-95 text-base flex items-center justify-center gap-2">
                     <span>Unlock Karo Jaan</span>
@@ -133,98 +135,156 @@
             <div class="mt-6 pt-4 border-t border-pink-100 flex items-center justify-center gap-4 text-xs text-pink-500 font-semibold">
                 <span>🔐 100% Private</span>
                 <span>•</span>
-                <span>✨ Cute Emojis</span>
+                <span>👥 Max 6 Members</span>
                 <span>•</span>
-                <span>💌 Sweet Vibe</span>
+                <span>🕒 3-4 Days Saved</span>
             </div>
         </div>
     </div>
 
+    <!-- Profile Setup Modal (Enter Name & Pick Avatar) -->
+    <div id="profileModal" class="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full rounded-3xl p-6 sm:p-7 shadow-2xl border-2 border-pink-200 text-center relative">
+            <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-tr from-pink-400 to-rose-500 rounded-full flex items-center justify-center text-3xl text-white shadow-md" id="previewSelectedAvatar">
+                🥰
+            </div>
+            <h2 class="font-bold text-xl text-gray-800 mb-1">Apna Naam & Avatar Chuno</h2>
+            <p class="text-xs text-pink-600 mb-4 font-semibold">Room me sabhi log isi naam se aapko pehchanenge (Limit: Max 6)</p>
+
+            <form id="profileForm" class="space-y-4 text-left">
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1.5 ml-1">Aapka Pyaara Naam (e.g. Babu, Piyu, Jaan):</label>
+                    <input type="text" id="userNameInput" maxlength="20" required placeholder="Naam likho..." 
+                           class="w-full px-4 py-3 rounded-2xl bg-pink-50/70 border-2 border-pink-200 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-pink-200 outline-none text-sm font-semibold transition-all">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1.5 ml-1">Apna Favorite Avatar Emojis me se chuno:</label>
+                    <div class="grid grid-cols-6 gap-2 p-2 bg-pink-50/60 rounded-2xl border border-pink-100" id="avatarPickerGrid">
+                        <button type="button" class="avatar-option p-2 text-2xl rounded-xl bg-white shadow-sm hover:scale-110 active:scale-95 transition-all border border-pink-300 ring-2 ring-pink-400" data-avatar="🥰">🥰</button>
+                        <button type="button" class="avatar-option p-2 text-2xl rounded-xl bg-white shadow-sm hover:scale-110 active:scale-95 transition-all border border-transparent" data-avatar="👸">👸</button>
+                        <button type="button" class="avatar-option p-2 text-2xl rounded-xl bg-white shadow-sm hover:scale-110 active:scale-95 transition-all border border-transparent" data-avatar="🤴">🤴</button>
+                        <button type="button" class="avatar-option p-2 text-2xl rounded-xl bg-white shadow-sm hover:scale-110 active:scale-95 transition-all border border-transparent" data-avatar="🌸">🌸</button>
+                        <button type="button" class="avatar-option p-2 text-2xl rounded-xl bg-white shadow-sm hover:scale-110 active:scale-95 transition-all border border-transparent" data-avatar="🧸">🧸</button>
+                        <button type="button" class="avatar-option p-2 text-2xl rounded-xl bg-white shadow-sm hover:scale-110 active:scale-95 transition-all border border-transparent" data-avatar="🦋">🦋</button>
+                    </div>
+                </div>
+
+                <div id="roomLimitWarning" class="hidden p-2.5 bg-rose-50 border border-rose-200 rounded-xl text-rose-600 text-xs text-center font-medium">
+                    ⚠️ Room full ho chuka hai (6/6). Kripya kisi ke disconnect hone ka wait karein.
+                </div>
+
+                <button type="submit" id="saveProfileBtn" class="w-full py-3 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold rounded-2xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <span>Chat Me Shamil Ho Jao</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Chat Container -->
     <div id="mainChatApp" class="w-full max-w-2xl h-[94vh] flex flex-col rounded-3xl glass-card shadow-2xl border border-white/70 overflow-hidden relative z-10 transition-all">
         
         <!-- Header Bar -->
-        <header class="glass-header px-4 py-3 border-b border-pink-200 flex items-center justify-between shrink-0 shadow-sm">
-            <div class="flex items-center gap-3">
-                <div class="relative">
-                    <div id="userAvatar" class="w-11 h-11 rounded-full bg-gradient-to-tr from-pink-400 to-rose-500 flex items-center justify-center text-2xl shadow text-white ring-2 ring-pink-300">
-                        🥰
+        <header class="glass-header px-4 py-2.5 border-b border-pink-200 shrink-0 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div id="currentUserAvatarBadge" class="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-400 to-rose-500 flex items-center justify-center text-xl shadow text-white ring-2 ring-pink-300">
+                            🥰
+                        </div>
+                        <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-white rounded-full"></span>
                     </div>
-                    <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-400 border-2 border-white rounded-full"></span>
+                    <div>
+                        <h2 class="font-bold text-gray-800 text-sm sm:text-base leading-tight flex items-center gap-1.5">
+                            <span id="currentUserNameDisplay">Hamara Secret Group</span>
+                            <span class="text-rose-500 text-xs sm:text-sm">💖</span>
+                        </h2>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="text-emerald-600 font-bold flex items-center gap-1">
+                                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span id="onlineCountText">1/6 Online</span>
+                            </span>
+                            <span class="text-gray-300">•</span>
+                            <span class="text-pink-600 font-medium">3-4 Din Chat Save</span>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h2 class="font-bold text-gray-800 text-base leading-tight flex items-center gap-1.5">
-                        <span id="displayPartnerName">My Cutie Piyu</span>
-                        <span class="text-rose-500 text-sm">💖</span>
-                    </h2>
-                    <p id="relationshipStatus" class="text-xs text-pink-600 font-semibold flex items-center gap-1">
-                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></span>
-                        <span id="statusText">Hamesha saath rehne ka vaada</span>
-                    </p>
+
+                <!-- Action buttons -->
+                <div class="flex items-center gap-1.5 sm:gap-2">
+                    <!-- Change Profile / Name button -->
+                    <button id="editProfileBtn" title="Apna Naam Badlo" class="px-2.5 py-1.5 bg-pink-100 hover:bg-pink-200 text-pink-700 text-xs font-bold rounded-xl border border-pink-300 transition-all flex items-center gap-1 active:scale-95">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <span class="hidden sm:inline">Profile</span>
+                    </button>
+                    
+                    <!-- Sound toggle -->
+                    <button id="musicToggleBtn" title="Play Romantic Lo-Fi Chords" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-pink-500 hover:bg-pink-50 border border-pink-200 flex items-center justify-center text-sm shadow-sm transition-all active:scale-90">
+                        <i class="fa-solid fa-music"></i>
+                    </button>
+
+                    <!-- Info Modal Trigger -->
+                    <button id="loveInfoBtn" title="Hamare Members & Rules" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-rose-500 text-white hover:bg-rose-600 flex items-center justify-center text-sm shadow-sm transition-all active:scale-90">
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- Header Quick Action Buttons -->
-            <div class="flex items-center gap-1.5 sm:gap-2">
-                <!-- Identity switch (Who is typing) -->
-                <button id="switchRoleBtn" title="Switch between Me & Piyu" class="px-2.5 py-1.5 bg-pink-100 hover:bg-pink-200 text-pink-700 text-xs font-bold rounded-xl border border-pink-300 transition-all flex items-center gap-1 active:scale-95">
-                    <i class="fa-solid fa-arrows-rotate text-xs"></i>
-                    <span id="currentSenderLabel">Main: Babu</span>
-                </button>
-                
-                <!-- Romantic Sound Melody toggle -->
-                <button id="musicToggleBtn" title="Play Romantic Lo-Fi Chords" class="w-9 h-9 rounded-full bg-white text-pink-500 hover:bg-pink-50 border border-pink-200 flex items-center justify-center text-sm shadow-sm transition-all active:scale-90">
-                    <i class="fa-solid fa-music"></i>
-                </button>
-
-                <!-- Love Counter Modal Trigger -->
-                <button id="loveInfoBtn" title="Hamara Love Counter & Quotes" class="w-9 h-9 rounded-full bg-rose-500 text-white hover:bg-rose-600 flex items-center justify-center text-sm shadow-sm transition-all active:scale-90">
-                    <i class="fa-solid fa-heart"></i>
-                </button>
+            <!-- Active Members Bar (Up to 6 participants horizontal scroll) -->
+            <div class="mt-2 pt-2 border-t border-pink-100/80 flex items-center gap-2 overflow-x-auto no-scrollbar" id="onlineMembersBar">
+                <span class="text-[11px] font-bold text-pink-500 shrink-0">Live (Max 6):</span>
+                <div id="membersChipList" class="flex items-center gap-1.5">
+                    <!-- Member pills inserted dynamically -->
+                </div>
             </div>
         </header>
 
-        <div class="bg-gradient-to-r from-pink-200/70 via-rose-100/70 to-purple-100/70 px-4 py-1.5 border-b border-pink-100 flex items-center justify-between text-xs font-semibold text-rose-700">
+        <!-- Quick Romantic Quote / Love Bar -->
+        <div class="bg-gradient-to-r from-pink-200/70 via-rose-100/70 to-purple-100/70 px-4 py-1 border-b border-pink-100 flex items-center justify-between text-xs font-semibold text-rose-700">
             <div class="flex items-center gap-1 overflow-hidden truncate">
-                <span>✨ Love Quote:</span>
+                <span>✨ Vibe:</span>
                 <span id="miniQuote" class="italic truncate text-gray-600">"Tere bina meri har khushi adhoori hai."</span>
             </div>
-            <button id="sendLoveHeartBtn" class="shrink-0 ml-2 px-2 py-0.5 bg-rose-500 text-white rounded-full text-[11px] shadow hover:bg-rose-600 active:scale-95 transition-all">
-                Send Kiss 💋
+            <button id="sendLoveHeartBtn" class="shrink-0 ml-2 px-2.5 py-0.5 bg-rose-500 text-white rounded-full text-[11px] shadow hover:bg-rose-600 active:scale-95 transition-all flex items-center gap-1">
+                <span>Send Kiss</span>
+                <span>💋</span>
             </button>
         </div>
 
-        <div id="chatMessagesContainer" class="flex-1 overflow-y-auto p-4 space-y-3 relative">
-            <!-- Initial welcome banner -->
-            <div class="text-center my-4">
-                <div class="inline-block px-4 py-2 bg-pink-100/90 text-pink-700 text-xs rounded-full border border-pink-200 shadow-sm">
-                    🔒 Yeh chat 3-4 dino tak saved rahegi. Aap jab chahe yaha baatein kar sakte ho! ❤️
+        <!-- Messages History Stream -->
+        <div id="chatMessagesContainer" class="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 relative">
+            <div class="text-center my-2">
+                <div class="inline-block px-3.5 py-1.5 bg-pink-100/90 text-pink-700 text-xs rounded-full border border-pink-200 shadow-sm">
+                    🔒 Yeh room 6 logo ke liye reserved hai. 3-4 din tak sabhi baatein saved rahengi! ❤️
                 </div>
             </div>
 
-            <!-- Dynamic Messages inserted here -->
+            <!-- Dynamic Messages will be populated here -->
             <div id="messagesList" class="space-y-3"></div>
             <div id="scrollAnchor" class="h-2"></div>
         </div>
 
+        <!-- Quick Love Reaction Bar -->
         <div class="px-3 py-1.5 bg-pink-50/80 border-t border-pink-100 flex items-center gap-1.5 overflow-x-auto text-lg no-scrollbar shrink-0">
             <span class="text-xs font-bold text-pink-500 shrink-0 mr-1">Quick:</span>
-            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/70 transition-all active:scale-90" data-text="I love you so much meri Piyu ❤️">❤️</button>
-            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/70 transition-all active:scale-90" data-text="Babu mujhe aapki bohot yaad aa rahi hai 🥺">🥺</button>
-            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/70 transition-all active:scale-90" data-text="Mwahhh!! Ek pyaari si kissi aapke liye 💋">💋</button>
-            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/70 transition-all active:scale-90" data-text="Warm cuddles and tight hug for you 🤗">🤗</button>
-            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/70 transition-all active:scale-90" data-text="Mera cutie teddy bear 🧸">🧸</button>
-            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/70 transition-all active:scale-90" data-text="Khaana kha liya aapne time pe? 🍛">🍛</button>
-            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/70 transition-all active:scale-90" data-text="You are my forever and always 💍">💍</button>
+            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/80 text-xs font-semibold transition-all active:scale-90 flex items-center gap-1 shrink-0" data-text="I love you so much ❤️">❤️ Love you</button>
+            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/80 text-xs font-semibold transition-all active:scale-90 flex items-center gap-1 shrink-0" data-text="Mujhe aapki bohot yaad aa rahi hai 🥺">🥺 Yaad aa rahi</button>
+            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/80 text-xs font-semibold transition-all active:scale-90 flex items-center gap-1 shrink-0" data-text="Mwahhh!! Ek pyaari si kissi aapke liye 💋">💋 Kiss</button>
+            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/80 text-xs font-semibold transition-all active:scale-90 flex items-center gap-1 shrink-0" data-text="Warm cuddles and tight hug 🤗">🤗 Tight Hug</button>
+            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/80 text-xs font-semibold transition-all active:scale-90 flex items-center gap-1 shrink-0" data-text="Khaana kha liya sabne? 🍛">🍛 Khaana khaya?</button>
+            <button class="quick-emoji-btn px-2 py-0.5 rounded-xl hover:bg-pink-200 bg-white/80 text-xs font-semibold transition-all active:scale-90 flex items-center gap-1 shrink-0" data-text="Always with you forever 💍">💍 Forever</button>
         </div>
 
-        <footer class="p-2 sm:p-3 bg-white/90 border-t border-pink-200 shrink-0">
+        <!-- Chat Input Form -->
+        <footer class="p-2 sm:p-3 bg-white/95 border-t border-pink-200 shrink-0">
             <form id="chatForm" class="flex items-center gap-2">
                 <!-- Emoji drawer button -->
                 <button type="button" id="emojiDrawerBtn" class="w-10 h-10 rounded-2xl bg-pink-100 hover:bg-pink-200 text-pink-600 flex items-center justify-center text-xl transition-all shrink-0 active:scale-90">
                     🥰
                 </button>
 
-                <!-- Input Text Box -->
+                <!-- Message Input -->
                 <div class="flex-1 relative">
                     <input type="text" id="messageInput" placeholder="Kuch pyaara sa likho..." 
                            class="w-full px-4 py-2.5 rounded-2xl bg-pink-50/70 border border-pink-200 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-pink-200 outline-none text-sm transition-all placeholder-pink-400 font-medium">
@@ -258,6 +318,7 @@
         </footer>
     </div>
 
+    <!-- Room Info & Quotes Modal -->
     <div id="loveModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="glass-card max-w-md w-full rounded-3xl p-6 shadow-2xl border-2 border-pink-200 text-center relative animate-fade-in">
             <button id="closeModalBtn" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-600 flex items-center justify-center text-sm">
@@ -267,21 +328,25 @@
             <div class="w-14 h-14 mx-auto mb-3 bg-gradient-to-tr from-rose-500 to-pink-400 rounded-full flex items-center justify-center text-white text-2xl shadow-md love-pulse">
                 💑
             </div>
-            <h3 class="font-pacifico text-2xl text-rose-600 mb-1">Hamara Special Bond</h3>
-            <p class="text-xs text-gray-500 mb-4">Piyu & Babu ki pyaari si yaadein</p>
+            <h3 class="font-pacifico text-2xl text-rose-600 mb-1">Our Secret Love Space</h3>
+            <p class="text-xs text-gray-500 mb-4">6 Logo Ki Special & Safe Chat</p>
 
             <div class="bg-pink-50/90 rounded-2xl p-4 border border-pink-200 mb-4 text-left space-y-2.5">
                 <div class="flex items-center justify-between">
-                    <span class="text-xs font-semibold text-gray-600">Password:</span>
+                    <span class="text-xs font-semibold text-gray-600">Room Password:</span>
                     <span class="text-xs font-bold text-rose-600 bg-pink-100 px-2 py-0.5 rounded-lg">Piyu</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span class="text-xs font-semibold text-gray-600">Chat Retention:</span>
-                    <span class="text-xs font-bold text-emerald-600">3-4 Din Safe Storage 🕒</span>
+                    <span class="text-xs font-semibold text-gray-600">Member Limit:</span>
+                    <span class="text-xs font-bold text-indigo-600">Maximum 6 Members 👥</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span class="text-xs font-semibold text-gray-600">Love Status:</span>
-                    <span class="text-xs font-bold text-pink-600">Infinite & Forever ❤️</span>
+                    <span class="text-xs font-semibold text-gray-600">Message Memory:</span>
+                    <span class="text-xs font-bold text-emerald-600">3-4 Din Tak Saved 🕒</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold text-gray-600">Seen Status:</span>
+                    <span class="text-xs font-bold text-pink-600">Realtime Seen by Friends 👀</span>
                 </div>
             </div>
 
@@ -293,7 +358,7 @@
 
             <button id="newQuoteBtn" class="w-full py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-xl text-xs transition-all active:scale-95 flex items-center justify-center gap-2">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span>Naya Love Message Dekho</span>
+                <span>Naya Love Thought Dekho</span>
             </button>
         </div>
     </div>
@@ -301,53 +366,65 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, collection, addDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Global variables provided or fallbacks
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'piyu-love-chat-app';
+        // Global variables provided or safe defaults
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'piyu-love-group-space';
         let db = null;
         let auth = null;
-        let currentUser = null;
+        let currentUserId = null;
         let isFirebaseActive = false;
 
-        try {
-            if (typeof __firebase_config !== 'undefined') {
-                const firebaseConfig = JSON.parse(__firebase_config);
-                const app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-
-                // Auth Before Queries
-                const token = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-                if (token) {
-                    await signInWithCustomToken(auth, token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                
-                currentUser = auth.currentUser;
-                isFirebaseActive = true;
-            }
-        } catch (err) {
-            console.warn("Firestore running in resilient fallback mode:", err);
-        }
-
-        // Romantic Quotes pool
-        const romanticQuotes = [
-            "Tere bina meri har subah adhoori aur har shaam sooni lagti hai ❤️",
-            "Meri Piyu, aapki smile hi meri duniya ki sabse pyari cheez hai 🥰",
-            "Bas tumhara saath chahiye, chahe raste kaise bhi ho 💍",
-            "Mera dil sirf tumhare liye dhadakta hai meri jaan 💖",
-            "Aap meri zindagi ka sabse khubsurat gift ho 🌹",
-            "Ek pyaari si jhappi aapke liye jo saari thakan door kar de 🤗",
-            "Jab bhi aapka message aata hai, chehre pe smile aa jaati hai ✨"
-        ];
-
-        // App state
-        let currentSender = "Babu"; // Toggle between "Babu" and "Piyu"
-        let localMessages = [];
+        // Active state and limits
+        const MAX_MEMBERS_LIMIT = 6;
         const RETENTION_DAYS = 4;
         const FOUR_DAYS_MS = RETENTION_DAYS * 24 * 60 * 60 * 1000;
+
+        let myProfile = {
+            id: null,
+            name: sessionStorage.getItem('piyu_user_name') || '',
+            avatar: sessionStorage.getItem('piyu_user_avatar') || '🥰'
+        };
+
+        let localMessages = [];
+        let activeRoomMembers = [];
+
+        async function setupFirebase() {
+            try {
+                if (typeof __firebase_config !== 'undefined') {
+                    const firebaseConfig = JSON.parse(__firebase_config);
+                    const app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    auth = getAuth(app);
+
+                    // Auth Before Queries
+                    const token = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+                    if (token) {
+                        await signInWithCustomToken(auth, token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                    
+                    if (auth.currentUser) {
+                        currentUserId = auth.currentUser.uid;
+                        myProfile.id = currentUserId;
+                        isFirebaseActive = true;
+                        initRealtimeSync();
+                    }
+                } else {
+                    // Local fallback session
+                    myProfile.id = 'user_' + (sessionStorage.getItem('piyu_mock_uid') || Math.random().toString(36).substring(2, 9));
+                    sessionStorage.setItem('piyu_mock_uid', myProfile.id);
+                    currentUserId = myProfile.id;
+                    renderLocalMessages();
+                }
+            } catch (err) {
+                console.warn("Using resilient fallback mode:", err);
+                myProfile.id = 'user_' + Math.random().toString(36).substring(2, 9);
+                currentUserId = myProfile.id;
+                renderLocalMessages();
+            }
+        }
 
         let audioCtx = null;
         let isMusicPlaying = false;
@@ -363,7 +440,6 @@
             return audioCtx;
         }
 
-        // Cute bubble send sound
         function playPopSound(freq = 600, duration = 0.12) {
             try {
                 const ctx = getAudioContext();
@@ -372,7 +448,7 @@
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(freq, ctx.currentTime);
                 osc.frequency.exponentialRampToValueAtTime(freq * 1.5, ctx.currentTime + duration);
-                gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                gain.gain.setValueAtTime(0.18, ctx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
                 osc.connect(gain);
                 gain.connect(ctx.destination);
@@ -381,45 +457,25 @@
             } catch(e){}
         }
 
-        // Soft romantic chord generator (chime)
         function playHeartChord() {
             try {
                 const ctx = getAudioContext();
-                const freqs = [523.25, 659.25, 783.99, 1046.50]; // C Major arpeggio
+                const freqs = [523.25, 659.25, 783.99, 1046.50]; // Sweet C Major arpeggio
                 freqs.forEach((f, idx) => {
                     setTimeout(() => {
                         const osc = ctx.createOscillator();
                         const gain = ctx.createGain();
                         osc.type = 'triangle';
                         osc.frequency.setValueAtTime(f, ctx.currentTime);
-                        gain.gain.setValueAtTime(0.12, ctx.currentTime);
-                        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+                        gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
                         osc.connect(gain);
                         gain.connect(ctx.destination);
                         osc.start();
-                        osc.stop(ctx.currentTime + 0.6);
-                    }, idx * 90);
+                        osc.stop(ctx.currentTime + 0.5);
+                    }, idx * 80);
                 });
             } catch(e){}
-        }
-
-        // Gentle lo-fi chords toggle
-        function toggleBackgroundLoFi() {
-            const btn = document.getElementById('musicToggleBtn');
-            if (isMusicPlaying) {
-                clearInterval(musicInterval);
-                isMusicPlaying = false;
-                btn.innerHTML = '<i class="fa-solid fa-music"></i>';
-                showToast("🎵 Music paused", "🎶");
-            } else {
-                isMusicPlaying = true;
-                btn.innerHTML = '<i class="fa-solid fa-volume-high text-rose-500"></i>';
-                showToast("💖 Playing soft romantic melody", "🎵");
-                playHeartChord();
-                musicInterval = setInterval(() => {
-                    if (isMusicPlaying) playHeartChord();
-                }, 4500);
-            }
         }
 
         function showToast(message, icon = "❤️") {
@@ -436,6 +492,7 @@
             }, 3000);
         }
 
+        // Floating heart particles generator
         function spawnFloatingHearts() {
             const container = document.getElementById('heartContainer');
             const emojis = ['❤️', '💖', '💕', '🌸', '✨', '🧸', '💋', '💗'];
@@ -445,10 +502,10 @@
                 heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
                 heart.style.left = Math.random() * 100 + 'vw';
                 heart.style.animationDuration = (5 + Math.random() * 5) + 's';
-                heart.style.opacity = (0.3 + Math.random() * 0.5).toString();
+                heart.style.opacity = (0.3 + Math.random() * 0.4).toString();
                 container.appendChild(heart);
                 setTimeout(() => heart.remove(), 10000);
-            }, 900);
+            }, 1000);
         }
         spawnFloatingHearts();
 
@@ -457,10 +514,12 @@
         const passwordInput = document.getElementById('passwordInput');
         const passwordError = document.getElementById('passwordError');
         const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+        const profileModal = document.getElementById('profileModal');
 
-        // Check if unlocked in session
+        // Check if unlocked in current session
         if (sessionStorage.getItem('piyu_unlocked') === 'true') {
             lockScreen.classList.add('hidden');
+            checkProfileSetup();
         }
 
         togglePasswordBtn.addEventListener('click', () => {
@@ -472,52 +531,147 @@
         lockForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const val = passwordInput.value.trim();
-            // Case-insensitive match for "Piyu"
+            // Password verification for 'Piyu' (case-insensitive)
             if (val.toLowerCase() === 'piyu') {
                 sessionStorage.setItem('piyu_unlocked', 'true');
                 passwordError.classList.add('hidden');
                 
-                // Romantic celebration
                 confetti({
-                    particleCount: 80,
-                    spread: 70,
+                    particleCount: 70,
+                    spread: 60,
                     origin: { y: 0.6 },
                     colors: ['#ff4d6d', '#ff758f', '#ffb3c1']
                 });
                 playHeartChord();
-                showToast("Welcome to your secret love space! 🥰", "💖");
+                showToast("Password correct! Welcome ❤️", "💖");
 
                 lockScreen.classList.add('opacity-0', 'pointer-events-none', 'transition-all', 'duration-500');
-                setTimeout(() => lockScreen.classList.add('hidden'), 500);
+                setTimeout(() => {
+                    lockScreen.classList.add('hidden');
+                    checkProfileSetup();
+                }, 500);
             } else {
                 passwordError.classList.remove('hidden');
-                passwordInput.classList.add('border-red-400', 'animate-shake');
-                setTimeout(() => passwordInput.classList.remove('animate-shake'), 600);
+                passwordInput.classList.add('border-red-400');
+                setTimeout(() => passwordInput.classList.remove('border-red-400'), 800);
             }
         });
 
-        const switchRoleBtn = document.getElementById('switchRoleBtn');
-        const currentSenderLabel = document.getElementById('currentSenderLabel');
-        const displayPartnerName = document.getElementById('displayPartnerName');
-        const userAvatar = document.getElementById('userAvatar');
+        const userNameInput = document.getElementById('userNameInput');
+        const previewSelectedAvatar = document.getElementById('previewSelectedAvatar');
+        const profileForm = document.getElementById('profileForm');
+        const avatarOptions = document.querySelectorAll('.avatar-option');
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const currentUserNameDisplay = document.getElementById('currentUserNameDisplay');
+        const currentUserAvatarBadge = document.getElementById('currentUserAvatarBadge');
 
-        switchRoleBtn.addEventListener('click', () => {
-            if (currentSender === "Babu") {
-                currentSender = "Piyu";
-                currentSenderLabel.textContent = "Main: Piyu 🌸";
-                displayPartnerName.textContent = "My Handsome Babu";
-                userAvatar.textContent = "👸";
-                showToast("Switched to Piyu's View 💕", "👸");
+        function checkProfileSetup() {
+            if (!myProfile.name) {
+                profileModal.classList.remove('hidden');
             } else {
-                currentSender = "Babu";
-                currentSenderLabel.textContent = "Main: Babu 👑";
-                displayPartnerName.textContent = "My Cutie Piyu";
-                userAvatar.textContent = "🥰";
-                showToast("Switched to Babu's View ❤️", "🤴");
+                updateUIProfile();
+                updatePresenceHeartbeat();
             }
-            playPopSound(750, 0.08);
-            renderMessages();
+        }
+
+        function updateUIProfile() {
+            if (myProfile.name) {
+                currentUserNameDisplay.textContent = myProfile.name;
+                currentUserAvatarBadge.textContent = myProfile.avatar || '🥰';
+                userNameInput.value = myProfile.name;
+            }
+        }
+
+        avatarOptions.forEach(btn => {
+            btn.addEventListener('click', () => {
+                avatarOptions.forEach(b => {
+                    b.classList.remove('border-pink-300', 'ring-2', 'ring-pink-400');
+                    b.classList.add('border-transparent');
+                });
+                btn.classList.add('border-pink-300', 'ring-2', 'ring-pink-400');
+                btn.classList.remove('border-transparent');
+                myProfile.avatar = btn.getAttribute('data-avatar');
+                previewSelectedAvatar.textContent = myProfile.avatar;
+                playPopSound(700, 0.05);
+            });
         });
+
+        profileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = userNameInput.value.trim();
+            if (!name) return;
+
+            myProfile.name = name;
+            sessionStorage.setItem('piyu_user_name', name);
+            sessionStorage.setItem('piyu_user_avatar', myProfile.avatar);
+
+            profileModal.classList.add('hidden');
+            updateUIProfile();
+            updatePresenceHeartbeat();
+            showToast(`Welcome ${myProfile.name}! 💕`, myProfile.avatar);
+            playPopSound(800, 0.1);
+        });
+
+        editProfileBtn.addEventListener('click', () => {
+            profileModal.classList.remove('hidden');
+        });
+
+        async function updatePresenceHeartbeat() {
+            if (!myProfile.name || !myProfile.id) return;
+
+            const memberData = {
+                id: myProfile.id,
+                name: myProfile.name,
+                avatar: myProfile.avatar || '🥰',
+                lastSeen: Date.now()
+            };
+
+            if (isFirebaseActive && db && auth.currentUser) {
+                try {
+                    // Strict Rule 1: /artifacts/{appId}/public/data/{collectionName}
+                    const memberDoc = doc(db, 'artifacts', appId, 'public', 'data', 'room_members', myProfile.id);
+                    await setDoc(memberDoc, memberData);
+                } catch(e) {
+                    console.warn("Heartbeat update error:", e);
+                }
+            }
+        }
+
+        // Heartbeat interval every 25 seconds to keep user actively counted in the 6 limit
+        setInterval(updatePresenceHeartbeat, 25000);
+
+        function renderOnlineMembers(members) {
+            const listEl = document.getElementById('membersChipList');
+            const countEl = document.getElementById('onlineCountText');
+            listEl.innerHTML = '';
+
+            const now = Date.now();
+            // Consider active if heartbeat within last 70 seconds
+            const active = members.filter(m => (now - (m.lastSeen || 0)) <= 70000);
+            
+            // Limit representation to max 6
+            const displayed = active.slice(0, MAX_MEMBERS_LIMIT);
+            countEl.textContent = `${displayed.length}/${MAX_MEMBERS_LIMIT} Live`;
+
+            if (displayed.length === 0) {
+                listEl.innerHTML = `<span class="text-[11px] text-gray-400 italic">No one online yet</span>`;
+                return;
+            }
+
+            displayed.forEach(member => {
+                const isMe = member.id === myProfile.id;
+                const chip = document.createElement('div');
+                chip.className = `flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold ${
+                    isMe ? 'bg-pink-200 text-rose-800 border border-pink-300' : 'bg-white text-gray-700 border border-pink-100 shadow-sm'
+                }`;
+                chip.innerHTML = `
+                    <span>${escapeHtml(member.avatar || '🥰')}</span>
+                    <span class="max-w-[70px] truncate">${escapeHtml(member.name)}</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+                `;
+                listEl.appendChild(chip);
+            });
+        }
 
         const messagesList = document.getElementById('messagesList');
         const scrollAnchor = document.getElementById('scrollAnchor');
@@ -538,11 +692,11 @@
             return (now - timestamp) <= FOUR_DAYS_MS;
         }
 
-        function renderMessages() {
+        function renderMessages(messagesToRender = localMessages) {
             messagesList.innerHTML = '';
             
-            // Filter 3-4 days active messages
-            const activeMsgs = localMessages
+            // Filter 3-4 days retention and sort in memory (Rule 2: No compound queries)
+            const activeMsgs = messagesToRender
                 .filter(m => isWithinLast4Days(m.timestamp))
                 .sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0));
 
@@ -552,34 +706,47 @@
                 emptyNotice.innerHTML = `
                     <div class="text-4xl mb-2">💌</div>
                     <p>Koi message nahi hai abhi.</p>
-                    <p class="text-xs text-pink-300 mt-1">Pehla message bhejke baat shuru karo!</p>
+                    <p class="text-xs text-pink-300 mt-1">Sabhi dost aur sweetheart yahan baat kar sakte hain!</p>
                 `;
                 messagesList.appendChild(emptyNotice);
                 return;
             }
 
             activeMsgs.forEach(msg => {
-                const isMe = msg.sender === currentSender;
+                const isMe = msg.senderId === myProfile.id || (myProfile.name && msg.senderName === myProfile.name);
                 const msgWrapper = document.createElement('div');
                 msgWrapper.className = `flex ${isMe ? 'justify-end' : 'justify-start'} msg-enter`;
 
                 const bubble = document.createElement('div');
-                bubble.className = `max-w-[78%] sm:max-w-[70%] rounded-2xl p-3 shadow-md relative ${
+                bubble.className = `max-w-[82%] sm:max-w-[72%] rounded-2xl p-3 shadow-md relative ${
                     isMe 
                     ? 'bg-gradient-to-tr from-rose-500 to-pink-500 text-white rounded-br-none' 
                     : 'bg-white text-gray-800 border border-pink-100 rounded-bl-none'
                 }`;
 
+                // Seen by info
+                let seenText = '';
+                if (msg.seenBy && Array.isArray(msg.seenBy)) {
+                    const othersWhoSaw = msg.seenBy.filter(name => name !== msg.senderName);
+                    if (othersWhoSaw.length > 0) {
+                        seenText = `<div class="mt-1 text-[9px] ${isMe ? 'text-pink-200' : 'text-gray-400'} flex items-center gap-1">
+                            <i class="fa-solid fa-check-double text-[8px]"></i> Seen by: ${escapeHtml(othersWhoSaw.join(', '))}
+                        </div>`;
+                    }
+                }
+
                 bubble.innerHTML = `
                     <div class="flex items-center gap-1.5 mb-1">
-                        <span class="text-[11px] font-bold ${isMe ? 'text-pink-100' : 'text-rose-500'}">
-                            ${msg.sender === "Piyu" ? '🌸 Piyu' : '👑 Babu'}
+                        <span class="text-sm">${escapeHtml(msg.avatar || '🥰')}</span>
+                        <span class="text-xs font-bold ${isMe ? 'text-pink-100' : 'text-rose-500'}">
+                            ${escapeHtml(msg.senderName || 'Anjaan')}
                         </span>
                         <span class="text-[10px] ${isMe ? 'text-pink-200' : 'text-gray-400'} ml-auto">
                             ${formatTime(msg.timestamp)}
                         </span>
                     </div>
                     <p class="text-sm break-words leading-relaxed font-medium">${escapeHtml(msg.text)}</p>
+                    ${seenText}
                 `;
                 msgWrapper.appendChild(bubble);
                 messagesList.appendChild(msgWrapper);
@@ -589,6 +756,7 @@
         }
 
         function escapeHtml(string) {
+            if (!string) return '';
             const div = document.createElement('div');
             div.textContent = string;
             return div.innerHTML;
@@ -599,27 +767,33 @@
 
         async function sendMessage(text) {
             if (!text.trim()) return;
+            if (!myProfile.name) {
+                checkProfileSetup();
+                return;
+            }
+
             const newMsg = {
                 text: text.trim(),
-                sender: currentSender,
-                timestamp: Date.now()
+                senderName: myProfile.name,
+                senderId: myProfile.id || 'anonymous',
+                avatar: myProfile.avatar || '🥰',
+                timestamp: Date.now(),
+                seenBy: [myProfile.name]
             };
 
             playPopSound(880, 0.1);
 
             if (isFirebaseActive && db && auth.currentUser) {
                 try {
-                    // Strict rule: /artifacts/{appId}/public/data/{collectionName}
-                    const chatCol = collection(db, 'artifacts', appId, 'public', 'data', 'love_messages');
+                    // Strict Rule 1: /artifacts/{appId}/public/data/{collectionName}
+                    const chatCol = collection(db, 'artifacts', appId, 'public', 'data', 'room_messages');
                     await addDoc(chatCol, newMsg);
                 } catch (err) {
-                    console.error("Firestore push error:", err);
-                    // Fallback to local
+                    console.error("Error sending message to Firestore:", err);
                     localMessages.push(newMsg);
                     renderMessages();
                 }
             } else {
-                // In-memory local fallback
                 localMessages.push(newMsg);
                 renderMessages();
             }
@@ -633,43 +807,71 @@
             sendMessage(messageInput.value);
         });
 
-        if (isFirebaseActive && db && auth.currentUser) {
-            try {
-                // Simple collection query as per Rule 2 (No orderBy or complex queries)
-                const messagesCol = collection(db, 'artifacts', appId, 'public', 'data', 'love_messages');
-                onSnapshot(messagesCol, (snapshot) => {
-                    const fetched = [];
-                    snapshot.forEach(docSnap => {
-                        fetched.push({ id: docSnap.id, ...docSnap.data() });
-                    });
-                    localMessages = fetched;
-                    renderMessages();
-                }, (error) => {
-                    console.error("Snapshot error:", error);
+        function initRealtimeSync() {
+            if (!isFirebaseActive || !db || !auth.currentUser) return;
+
+            // 1. Listen for room members (Rule 1 & 2: simple collection query, error callback required)
+            const membersCol = collection(db, 'artifacts', appId, 'public', 'data', 'room_members');
+            onSnapshot(membersCol, (snapshot) => {
+                const members = [];
+                snapshot.forEach(docSnap => {
+                    members.push(docSnap.data());
                 });
-            } catch (e) {
-                console.warn("Could not listen to snapshot:", e);
+                activeRoomMembers = members;
+                renderOnlineMembers(activeRoomMembers);
+            }, (err) => {
+                console.warn("Members snapshot error:", err);
+            });
+
+            // 2. Listen for messages
+            const messagesCol = collection(db, 'artifacts', appId, 'public', 'data', 'room_messages');
+            onSnapshot(messagesCol, (snapshot) => {
+                const fetched = [];
+                snapshot.forEach(docSnap => {
+                    const data = docSnap.data();
+                    fetched.push({ id: docSnap.id, ...data });
+
+                    // Auto mark seen by current user if not already marked
+                    if (myProfile.name && Array.isArray(data.seenBy) && !data.seenBy.includes(myProfile.name)) {
+                        try {
+                            const msgDoc = doc(db, 'artifacts', appId, 'public', 'data', 'room_messages', docSnap.id);
+                            const updatedSeen = [...data.seenBy, myProfile.name];
+                            setDoc(msgDoc, { seenBy: updatedSeen }, { merge: true });
+                        } catch(e) {}
+                    }
+                });
+                localMessages = fetched;
+                renderMessages();
+            }, (err) => {
+                console.warn("Messages snapshot error:", err);
+            });
+        }
+
+        function renderLocalMessages() {
+            if (localMessages.length === 0) {
+                localMessages = [
+                    {
+                        text: "Welcome to our private 6-person love room! ❤️",
+                        senderName: "Babu",
+                        avatar: "🤴",
+                        senderId: "mock1",
+                        timestamp: Date.now() - 1000 * 60 * 60,
+                        seenBy: ["Babu", "Piyu"]
+                    },
+                    {
+                        text: "Yahan hum sab ek dusre ke saath live online baat kar sakte hain 🥰",
+                        senderName: "Piyu",
+                        avatar: "🌸",
+                        senderId: "mock2",
+                        timestamp: Date.now() - 1000 * 60 * 30,
+                        seenBy: ["Babu", "Piyu"]
+                    }
+                ];
             }
-        } else {
-            // Seed romantic welcome messages in memory
-            localMessages = [
-                {
-                    text: "Hey meri jaan ❤️ Kaisi ho aap?",
-                    sender: "Babu",
-                    timestamp: Date.now() - 1000 * 60 * 60 * 2
-                },
-                {
-                    text: "Main theek hoon babu! Aapki bohot yaad aa rahi thi 🥺💕",
-                    sender: "Piyu",
-                    timestamp: Date.now() - 1000 * 60 * 50
-                },
-                {
-                    text: "I love you so much meri pyaari Piyu 🌹❤️",
-                    sender: "Babu",
-                    timestamp: Date.now() - 1000 * 60 * 15
-                }
-            ];
             renderMessages();
+            renderOnlineMembers([
+                { id: myProfile.id, name: myProfile.name || 'Aap', avatar: myProfile.avatar, lastSeen: Date.now() }
+            ]);
         }
 
         // Quick reaction bar
@@ -680,17 +882,17 @@
             });
         });
 
-        // Top mini kiss button
+        // Top Kiss action button
         document.getElementById('sendLoveHeartBtn').addEventListener('click', () => {
             confetti({
-                particleCount: 50,
-                spread: 60,
+                particleCount: 55,
+                spread: 70,
                 origin: { y: 0.2 },
                 colors: ['#e11d48', '#f43f5e', '#fb7185']
             });
             playHeartChord();
-            sendMessage("💋 Sending a big romantic kiss with lots of love!");
-            showToast("Kisses sent to your love! 💋", "😘");
+            sendMessage("💋 Ek pyaari si kissi sabke liye with lots of love!");
+            showToast("Romantic Kiss Sent! 💋", "😘");
         });
 
         // Emoji drawer toggle
@@ -707,41 +909,62 @@
             });
         });
 
-        // Music button
-        document.getElementById('musicToggleBtn').addEventListener('click', toggleBackgroundLoFi);
+        // Romantic lo-fi chords generator
+        const musicToggleBtn = document.getElementById('musicToggleBtn');
+        musicToggleBtn.addEventListener('click', () => {
+            if (isMusicPlaying) {
+                clearInterval(musicInterval);
+                isMusicPlaying = false;
+                musicToggleBtn.innerHTML = '<i class="fa-solid fa-music"></i>';
+                showToast("🎵 Melody paused", "🎶");
+            } else {
+                isMusicPlaying = true;
+                musicToggleBtn.innerHTML = '<i class="fa-solid fa-volume-high text-rose-500"></i>';
+                showToast("💖 Playing soft romantic melody", "🎵");
+                playHeartChord();
+                musicInterval = setInterval(() => {
+                    if (isMusicPlaying) playHeartChord();
+                }, 4500);
+            }
+        });
 
-        // Love Info Modal
+        // Quotes pool & Info modal
+        const romanticQuotes = [
+            "Tere bina meri har subah adhoori aur har shaam sooni lagti hai ❤️",
+            "Aapki smile hi is duniya ki sabse pyari cheez hai 🥰",
+            "Bas tumhara saath chahiye, chahe raste kaise bhi ho 💍",
+            "Mera dil sirf tumhare liye dhadakta hai meri jaan 💖",
+            "Aap sab meri zindagi ka sabse khubsurat hissa ho 🌹",
+            "Ek pyaari si jhappi jo saari thakan door kar de 🤗",
+            "Jab bhi aapka message aata hai, chehre pe muskaan aa jaati hai ✨"
+        ];
+
         const loveModal = document.getElementById('loveModal');
         const loveInfoBtn = document.getElementById('loveInfoBtn');
         const closeModalBtn = document.getElementById('closeModalBtn');
         const fullRomanticQuote = document.getElementById('fullRomanticQuote');
         const newQuoteBtn = document.getElementById('newQuoteBtn');
 
-        loveInfoBtn.addEventListener('click', () => {
-            loveModal.classList.remove('hidden');
-        });
-
-        closeModalBtn.addEventListener('click', () => {
-            loveModal.classList.add('hidden');
+        loveInfoBtn.addEventListener('click', () => loveModal.classList.remove('hidden'));
+        closeModalBtn.addEventListener('click', () => loveModal.classList.add('hidden'));
+        loveModal.addEventListener('click', (e) => {
+            if (e.target === loveModal) loveModal.classList.add('hidden');
         });
 
         newQuoteBtn.addEventListener('click', () => {
             const randomQuote = romanticQuotes[Math.floor(Math.random() * romanticQuotes.length)];
             fullRomanticQuote.textContent = `"${randomQuote}"`;
             document.getElementById('miniQuote').textContent = `"${randomQuote}"`;
-            playPopSound(700, 0.08);
+            playPopSound(720, 0.08);
         });
 
-        // Click outside modal to close
-        loveModal.addEventListener('click', (e) => {
-            if (e.target === loveModal) loveModal.classList.add('hidden');
-        });
-
-        // Cycle mini quotes every 20 seconds
         setInterval(() => {
             const q = romanticQuotes[Math.floor(Math.random() * romanticQuotes.length)];
             document.getElementById('miniQuote').textContent = `"${q}"`;
-        }, 20000);
+        }, 22000);
+
+        // Start Firebase initialization
+        setupFirebase();
     </script>
 </body>
 </html>
